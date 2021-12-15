@@ -1,0 +1,18 @@
+{
+  "name": "fiverr_disc_bot",
+  "version": "1.0.0",
+  "description": "Discord bot to send links after couple of hours",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mashuke Alam Jim",
+  "license": "MIT",
+  "dependencies": {
+    "discord.js": "^12.4.0",
+    "dotenv": "^10.0.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "uuid": "^8.3.2"
+  }
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set Links</title>
+</head>
+<body>
+    <ul>
+    <% array.forEach((el, index) => { %>
+        <li><div><p><%= el.link %></p></div></li>
+    <% }) %>
+    </ul>
+
+    <div class="row">
+        <!-- <form action="/install" method="get" > -->
+            <label for="Link">Link</label>
+            <input type="text" name="link" id="Link" placeholder="Link here">
+            <label for="Link">Channels</label>
+            <input type="text" name="channels" id="Channel" placeholder="Channel name here...">
+            <label for="Link">Time</label>
+            <input type="time" name="times" id="Time" placeholder="Time here...">    
+            <!-- <input type="submit" value="Submit"> -->
+            <button onclick="process()">Submit</button>
+        <!-- </form> -->
+    </div>
+</body>
+<script>
+const process = () => {
+    const Links = document.getElementById('Link').value;
+    const Channels = document.getElementById('Channel').value;
+    const Time = document.getElementById('Time').value;
+    console.log(Time);
+    let timeArr = Time.split(':'); 
+    const unixThen = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate(), timeArr[0], timeArr[1]).getTime();
+    const unixNow = new Date().getTime();
+
+    const difference = unixThen - unixNow;
+    console.log(unixThen, unixNow, difference/1000/60/60);
+    const json = {links: Links, channels: Channels, time: difference};
+
+    fetch(`/install?link=${Links}&channels=${Channels}&time=${difference}` );
+
+}
+</script>
+
+</html>
